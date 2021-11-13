@@ -87,6 +87,7 @@
             this.Controls.Add(this.btn_actualizar);
             this.Controls.Add(this.tablaCiudades);
             this.Name = "Ciudad";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ciudad";
             this.Load += new System.EventHandler(this.Ciudad_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tablaCiudades)).EndInit();

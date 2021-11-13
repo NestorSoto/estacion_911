@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace estacion_911
@@ -19,7 +12,7 @@ namespace estacion_911
 
         private void button1_Click(object sender, EventArgs e)
         {
-        
+
 
         }
 
@@ -37,7 +30,7 @@ namespace estacion_911
 
         private void btn_rutas_Click(object sender, EventArgs e)
         {
-            Rutas r= new Rutas();
+            Rutas r = new Rutas();
             r.ShowDialog();
         }
     }

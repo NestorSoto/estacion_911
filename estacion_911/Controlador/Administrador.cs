@@ -1,12 +1,10 @@
-﻿using MySqlConnector;
+﻿using estacion_911.Modelos;
+using MySqlConnector;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Configuration;
-using estacion_911.Modelos;
+using System.Data;
+using System.Threading.Tasks;
 
 namespace estacion_911.Controlador
 {
@@ -41,27 +39,8 @@ namespace estacion_911.Controlador
                 Console.WriteLine(reader.GetValue(2) + " || " + reader.GetValue(3) + " || " + reader.GetValue(1));
             }
         }
-        public static async Task<DataTable> MostrarAvionesAsync()
-        {
-            MySqlConnection cn = new MySqlConnection(ConfigurationManager.ConnectionStrings["sql"].ConnectionString);
-            cn.CloseAsync();
-            var command = new MySqlCommand("SELECT * FROM avion;", cn);
-            var reader = await command.ExecuteReaderAsync();
-            DataTable dt = new DataTable();
-            dt.Columns.Add("ID", typeof(int));
-            dt.Columns.Add("Marca", typeof(String));
-            dt.Columns.Add("Modelo",typeof(String));
-            dt.Columns.Add("Capacidad", typeof(int));
+        
 
-
-            while (await reader.ReadAsync())
-            {
-                Console.WriteLine(reader.GetValue(2) + " || " + reader.GetValue(3) + " || " + reader.GetValue(1));
-                dt.Rows.Add(reader.GetValue(0), reader.GetValue(2), reader.GetValue(3), reader.GetValue(1));
-            }
-            return dt;
-        }
-       
         public static async Task<List<object>> ObtenerAvionesAsync()
         {
             List<object> lista = new List<Object>();
@@ -70,16 +49,16 @@ namespace estacion_911.Controlador
 
             var command = new MySqlCommand("SELECT * FROM avion;", connection);
             var reader = await command.ExecuteReaderAsync();
-            
+
             while (await reader.ReadAsync())
             {
-                
+
                 Console.WriteLine(reader.GetValue(2) + " || " + reader.GetValue(3) + " || " + reader.GetValue(1));
                 AvionM a = new AvionM();
                 a.Id = int.Parse((String)reader.GetValue(0));
-                a.Marca= (string)reader.GetValue(2);
+                a.Marca = (string)reader.GetValue(2);
                 a.Modelo = (String)reader.GetValue(5);
-                a.Capacidad=int.Parse((String)reader.GetValue(1));
+                a.Capacidad = int.Parse((String)reader.GetValue(1));
                 lista.Add(a);
 
 
@@ -87,7 +66,7 @@ namespace estacion_911.Controlador
 
             return lista;
         }
-        public static void eliminarAvion(String marcaD,String modeloD)
+        public static void eliminarAvion(String marcaD, String modeloD)
         {
             MySqlConnection conexionD = mysql.getConexion();
             conexionD.OpenAsync();
@@ -97,7 +76,7 @@ namespace estacion_911.Controlador
             consultaD.Parameters.AddWithValue("@modelo", modeloD);
             consultaD.ExecuteNonQuery();
         }
-        
+
         public static DataTable MostrarAviones()
         {
             var connection = mysql.getConexion();
@@ -112,13 +91,13 @@ namespace estacion_911.Controlador
             dt.Columns.Add("Capacidad", typeof(int));
 
 
-            while (reader.Read()) 
+            while (reader.Read())
             {
                 //Console.WriteLine(reader.GetValue(),reader.GetValue(2) + " || " + reader.GetValue(3) + " || " + reader.GetValue(1));
                 dt.Rows.Add(new Object[] { reader.GetValue(0), reader.GetValue(2), reader.GetValue(3), reader.GetValue(1) });
             }
             return dt;
-            
+
         }
         public static void registrar(String marca, String modelo, int capacidad)
         {
@@ -177,7 +156,7 @@ namespace estacion_911.Controlador
             return dt;
 
         }
-        public static void registrarCiudad(String ciudad,String pais)
+        public static void registrarCiudad(String ciudad, String pais)
         {
             MySqlConnection conexion = mysql.getConexion();
             conexion.OpenAsync();
@@ -187,7 +166,7 @@ namespace estacion_911.Controlador
             consulta.Parameters.AddWithValue("@pais", pais);
             consulta.ExecuteNonQuery();
         }
-        public static void EliminarCiudad(String ciudadD,String paisD)
+        public static void EliminarCiudad(String ciudadD, String paisD)
         {
             MySqlConnection conexionD = mysql.getConexion();
             conexionD.OpenAsync();

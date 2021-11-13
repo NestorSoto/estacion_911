@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace estacion_911
@@ -20,15 +13,15 @@ namespace estacion_911
         private void Form1_Load(object sender, EventArgs e)
         {
             string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-            c_login.Text= userName;
+            c_login.Text = userName;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             //String v=c_login.get;
-            
+
             AdministradorF a = new AdministradorF();
-            
+
 
         }
 
@@ -37,7 +30,7 @@ namespace estacion_911
 
         }
 
-        
+
 
 
 
@@ -61,6 +54,6 @@ namespace estacion_911
 
         }
 
-        
+
     }
 }

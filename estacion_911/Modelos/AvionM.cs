@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace estacion_911.Modelos
 {
@@ -18,5 +14,5 @@ namespace estacion_911.Modelos
         public string Marca { get => marca; set => marca = value; }
         public string Modelo { get => modelo; set => modelo = value; }
     }
-    
+
 }

@@ -1,8 +1,5 @@
 ﻿using MySqlConnector;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace estacion_911.Controlador
@@ -24,7 +21,7 @@ namespace estacion_911.Controlador
                 Console.WriteLine(reader.GetValue(0) + "\t" + reader.GetValue(1) + "\t" + reader.GetValue(2) + "\t" + reader.GetValue(3) + "\t" + reader.GetValue(4) + "\t" + reader.GetValue(5) + "\t" + reader.GetValue(6));
             }
         }
-        public static void registrarPasajero(int codigo,String nombres,String apellidos,String DNI,String email,Boolean esadulto)
+        public static void registrarPasajero(int codigo, String nombres, String apellidos, String DNI, String email, Boolean esadulto)
         {
             MySqlConnection conexion = mysql.getConexion();
             conexion.OpenAsync();
